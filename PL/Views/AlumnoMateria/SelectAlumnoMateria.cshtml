@@ -1,0 +1,58 @@
+﻿@model ML.AlumnoMateria
+@{
+    ViewBag.Title = "SelectAlumnoMateria";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <h2>SelectAlumnoMateria</h2>
+    </div>
+    <hr />
+    <div class="row">
+
+    </div>
+    <hr />
+    <div class="row">
+        @if (Model.AlumnoMaterias != null)
+        {
+            <table class="table table-dark table-bordered table-responsive table-hover" id="tblAlumno">
+                <thead>
+                    <tr>
+                        <td class="text-center" style=" font-weight:bold;">Seleccionar</td>
+
+                        <td class="hidden">IdAlumnoMateria</td>
+                        <td class="hidden" style=" font-weight:bold;">IdMateria</td>
+                        <td class="text-center" style=" font-weight:bold;">Materia</td>
+                        <td class="text-center" style=" font-weight:bold;">Costo</td>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (ML.AlumnoMateria alumnomateria in Model.AlumnoMaterias)
+                    {
+                    <tr>
+
+
+                        <td class="hidden">@alumnomateria.IdAlumnoMateria</td>
+                        <td class="hidden">@alumnomateria.Materias.IdMateria</td>
+                        <td>@alumnomateria.Materias.Nombre</td>
+                        <td>@alumnomateria.Materias.Costo</td>
+                        
+
+
+                    </tr>
+                    }
+                </tbody>
+            </table>
+
+
+        }
+        else
+        {
+            <div class="alert alert-danger" role="alert">Ocurrio un error al realizar la consulta </div>
+        }
+    </div>
+</div>
+
+
