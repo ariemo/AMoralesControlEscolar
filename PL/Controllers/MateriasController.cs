@@ -39,17 +39,18 @@ namespace PL.Controllers
         public ActionResult Form(ML.Materias materias)
         {
             ML.Result result = new ML.Result();
-            if (materias.IdMateria != null)
+            if (materias.IdMateria == 0)
             {
-                result = BL.Materia.Update(materias);
-                ViewBag.Message = "Se ha Actualizado el registro";
+                result = BL.Materia.Add(materias);
+                ViewBag.Message = "Se ha agregado el registro";
+                
                 
             }
             else
             {
-                result = BL.Materia.Add(materias);
-                ViewBag.Message = "Se ha agregado el registro";
-               
+                result = BL.Materia.Update(materias);
+                ViewBag.Message = "Se ha Actualizado el registro";
+
             }
             if (result.Correct)
             {
